@@ -1,14 +1,26 @@
 #include "board.h"
-
+#include <iostream>
 
 
 Board::Board(int n, int m): nLin(n), nCol(m){
  
- 	tableb.state = new bool* [nLin];
- 	for (bool i = 0; i < nLin; ++i)
+ 	celula.state = new bool * [nLin];
+ 	for (int i = 0; i < nLin; ++i)
  	{
- 		tableb[nLin] = new bool [nCol];
+ 		celula.state[i] = new bool [nCol];
  	}
 
+ 	celula.next = new bool * [nLin];
+ 	for (int i = 0; i < nLin; ++i)
+ 	{
+ 		celula.next[i] = new bool [nCol];
+ 	}
 
-};
+}
+
+
+void Board::size(){
+
+	std::cout<<nLin<<" "<<nCol<<std::endl;
+
+}

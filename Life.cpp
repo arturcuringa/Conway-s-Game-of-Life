@@ -19,11 +19,11 @@ int main (int argc, char *argv[] ){
 		{
 			std::getline(myfile,line);
 			std::string::size_type sz;
-			std::cout<<line<<std::endl;
 			nLin = std::stoi(line, &sz);
 			nCol = std::stoi(line, &sz);
 			
 			Board Life(nLin, nCol);
+			Life.size();
 			myfile.close();
 		}
 		else

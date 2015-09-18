@@ -1,17 +1,20 @@
 #ifndef _BOARD_
 #define _BOARD_
 
-typedef struct{
-	bool state,next;
-} cel;
+
 
 class Board{
 	private:
 		int nLin;
 		int nCol;
-		cel ** tableb
+		typedef struct{
+			bool ** state;
+			bool ** next;
+		} cel;
+		cel celula;
 	public:
 		Board(int n, int m);
+		void size();
 
 };
 
