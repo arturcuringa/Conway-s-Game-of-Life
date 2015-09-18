@@ -5,6 +5,9 @@
  
 
 int main (int argc, char *argv[] ){
+	int nLin;
+	int nCol;
+
 	if(argc != 2){
 		std::cout<<"Error: no text input file";
 	}
@@ -14,13 +17,13 @@ int main (int argc, char *argv[] ){
 		std::ifstream myfile(line);
 		if (myfile.is_open())
 		{
-			while(std::getline(myfile,line))
-			{
-
-				std::cout<<line<<std::endl;
-
-			}
-
+			std::getline(myfile,line);
+			std::string::size_type sz;
+			std::cout<<line<<std::endl;
+			nLin = std::stoi(line, &sz);
+			nCol = std::stoi(line, &sz);
+			
+			Board Life(nLin, nCol);
 			myfile.close();
 		}
 		else
