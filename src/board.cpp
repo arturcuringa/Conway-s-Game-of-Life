@@ -24,3 +24,8 @@ void Board::size(){
 	std::cout<<nLin<<" "<<nCol<<std::endl;
 
 }
+
+Board::~Board(){
+	delete [] celula.state;
+	delete [] celula.next;
+}

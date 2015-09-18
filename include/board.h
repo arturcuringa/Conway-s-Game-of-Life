@@ -15,6 +15,7 @@ class Board{
 	public:
 		Board(int n, int m);
 		void size();
+		~Board();
 
 };
 
