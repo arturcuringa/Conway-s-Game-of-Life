@@ -3,8 +3,8 @@
 
 class Board{
 	private:
-		int x;
-		int y;
+		int nLin;
+		int nCol;
 		int ** table;
 		bool ** tableb;
 	public:

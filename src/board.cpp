@@ -2,17 +2,17 @@
 
 
 
-Board::Board(int n, int m): x(n), y(m){
- 	table = new int* [x];
- 	for (int i = 0; i < x; ++i)
+Board::Board(int n, int m): nLin(n), nCol(m){
+ 	table = new int* [nLin];
+ 	for (int i = 0; i < nLin; ++i)
  	{
- 		table[x] = new int [y];
+ 		table[nLin] = new int [nCol];
  	}
 
- 	tableb = new bool* [x];
- 	for (bool i = 0; i < x; ++i)
+ 	tableb = new bool* [nLin];
+ 	for (bool i = 0; i < nLin; ++i)
  	{
- 		tableb[x] = new bool [y];
+ 		tableb[nLin] = new bool [nCol];
  	}
 
 
