@@ -9,7 +9,6 @@ class Board{
 	private:
 		int nLin;
 		int nCol;
-		int ** table;
 		cel ** tableb
 	public:
 		Board(int n, int m);
