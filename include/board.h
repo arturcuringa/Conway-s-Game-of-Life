@@ -2,7 +2,7 @@
 #define _BOARD_
 
 class Board(){
-	
+	//STUB
 };
 
 
