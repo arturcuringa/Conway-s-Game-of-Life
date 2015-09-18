@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-
+#include "board.h"
  
 
 int main (int argc, char *argv[] ){
