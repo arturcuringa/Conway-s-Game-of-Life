@@ -2,6 +2,10 @@
 #define _BOARD_
 
 
+#include <iostream>
+#include <fstream>
+#include <string>
+
 
 class Board{
 	private:
@@ -15,8 +19,10 @@ class Board{
 	public:
 		Board(int n, int m);
 		void size();
+		void setAlive(std::ifstream &text);
 		~Board();
-
+		void print();
+			 
 };
 
 #endif

@@ -24,6 +24,8 @@ int main (int argc, char *argv[] ){
 			
 			Board Life(nLin, nCol);
 			Life.size();
+			Life.setAlive(myfile);
+			Life.print();
 			myfile.close();
 		}
 		else

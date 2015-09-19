@@ -1,5 +1,5 @@
 #include "board.h"
-#include <iostream>
+
 
 
 Board::Board(int n, int m): nLin(n), nCol(m){
@@ -17,7 +17,36 @@ Board::Board(int n, int m): nLin(n), nCol(m){
  	}
 
 }
+void Board::setAlive(std::ifstream &text){
+	std::string line;
 
+	std::getline(text, line);
+	for (int i = 0; i < nLin; ++i)
+	{
+		std::getline(text, line);
+		for (int j = 0; j < nCol; ++j)
+		{
+			if(line[j] == '*')
+				
+				celula.state[i][j] = true;
+			else
+				celula.state[i][j] = false;
+		}
+	}
+
+}
+void Board::print(){
+	for (int i = 0; i < nLin; ++i)
+	{
+		for (int j = 0; j < nCol; ++j)
+		{
+					std::cout<< (celula.state[i][j] == true ? '*' : '-') ;
+
+		}
+				std::cout<<'\n';
+	}
+		
+}
 
 void Board::size(){
 
