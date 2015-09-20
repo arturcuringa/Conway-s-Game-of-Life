@@ -23,6 +23,7 @@ class Board{
 		void setAlive(std::ifstream &text);
 		~Board();
 		void print();
+		void update();
 			 
 };
 

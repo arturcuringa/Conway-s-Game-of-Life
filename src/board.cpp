@@ -58,6 +58,12 @@ void Board::size(){
 
 }
 
+void Board::update(){
+
+	//stub
+}
+
+
 Board::~Board(){
 	delete [] celula.state;
 	delete [] celula.next;
