@@ -9,22 +9,18 @@
 
 class Board{
 	private:
-		int nLin;
-		int nCol;
-		typedef struct{
-			bool ** state;
-			bool ** next;
-		} cel;
-		cel celula;
-		char cell;
+		int nLin; // Number of lines of the board
+		int nCol; // Number of collums 
+		bool ** state; // Pointer to boolean array of arrays 
+		char cell; //Type of char used to represent a living cell
 	public:
-		Board(int n, int m);
-		void size();
-		void setAlive(std::ifstream &text);
-		~Board();
-		void print();
-		int round(int lin, int col);
-		void update();
+		Board(int n, int m); // Constructor 
+		void size(); // Print size of the board
+		void setAlive(std::ifstream &text); // Set Board with text file
+		~Board(); // Destructor 
+		void print(); // Print the actual state of the board
+		int round(int lin, int col);// Count how many living cells are surrounding the space lin x col
+		void update(); // Update the board with the rules of ~~~~Life's game
 			 
 };
 

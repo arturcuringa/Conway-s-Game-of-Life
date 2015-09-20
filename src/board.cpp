@@ -4,19 +4,14 @@
 
 Board::Board(int n, int m): nLin(n), nCol(m){
  
- 	celula.state = new bool * [nLin];
+ 	state = new bool * [nLin];
  	for (int i = 0; i < nLin; ++i)
  	{
- 		celula.state[i] = new bool [nCol];
+ 		state[i] = new bool [nCol];
  	}
-
- 	celula.next = new bool * [nLin];
- 	for (int i = 0; i < nLin; ++i)
- 	{
- 		celula.next[i] = new bool [nCol];
- 	}
-
+	
 }
+
 void Board::setAlive(std::ifstream &text){
 	std::string line;
 
@@ -31,9 +26,9 @@ void Board::setAlive(std::ifstream &text){
 		{
 			if(line[j] == cell)
 				
-				celula.state[i][j] = true;
+				 state[i][j] = true;
 			else
-				celula.state[i][j] = false;
+				 state[i][j] = false;
 		}
 	}
 
@@ -44,7 +39,7 @@ void Board::print(){
 	{
 		for (int j = 0; j < nCol; ++j)
 		{
-					std::cout<< (celula.state[i][j] == true ? cell : '-') ;
+					std::cout<< (state[i][j] == true ? cell : '-') ;
 
 		}
 				std::cout<<'\n';
@@ -60,7 +55,18 @@ void Board::size(){
 
 int Board::round(int lin, int col){
 	
-	//stub
+	if (lin > 0 && lin < nLin -1 && col > 0 && col < nCol -1)
+	{
+		int i = 0;
+		if(state[lin-1][col] == true){++i;}
+		if(state[lin-1][col-1] == true){++i;}
+		if(state[lin][col-1] == true){++i;}
+		if(state[lin+1][col-1] == true){++i;}
+		if(state[lin+1][col] == true){++i;}
+		if(state[lin+1][col+1] == true){++i;}
+		if(state[lin][col+1] == true){++i;}
+		return i;
+	}
 
 	return 0;
 
@@ -82,6 +88,5 @@ void Board::update(){
 
 
 Board::~Board(){
-	delete [] celula.state;
-	delete [] celula.next;
+	delete []  state;
 }

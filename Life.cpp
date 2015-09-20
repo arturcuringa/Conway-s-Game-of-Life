@@ -26,6 +26,7 @@ int main (int argc, char *argv[] ){
 			Life.size();
 			Life.setAlive(myfile);
 			Life.print();
+			std::cout<<Life.round(3,3);
 			myfile.close();
 		}
 		else
