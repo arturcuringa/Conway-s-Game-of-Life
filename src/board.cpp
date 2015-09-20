@@ -20,13 +20,16 @@ Board::Board(int n, int m): nLin(n), nCol(m){
 void Board::setAlive(std::ifstream &text){
 	std::string line;
 
-	std::getline(text, line);
+
+	std::getline(text,line);
+	cell = line[0];
+	std::cout<<cell;
 	for (int i = 0; i < nLin; ++i)
 	{
 		std::getline(text, line);
 		for (int j = 0; j < nCol; ++j)
 		{
-			if(line[j] == '*')
+			if(line[j] == cell)
 				
 				celula.state[i][j] = true;
 			else
@@ -36,11 +39,12 @@ void Board::setAlive(std::ifstream &text){
 
 }
 void Board::print(){
+	std::cout<<"\n";
 	for (int i = 0; i < nLin; ++i)
 	{
 		for (int j = 0; j < nCol; ++j)
 		{
-					std::cout<< (celula.state[i][j] == true ? '*' : '-') ;
+					std::cout<< (celula.state[i][j] == true ? cell : '-') ;
 
 		}
 				std::cout<<'\n';

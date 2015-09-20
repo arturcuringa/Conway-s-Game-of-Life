@@ -16,6 +16,7 @@ class Board{
 			bool ** next;
 		} cel;
 		cel celula;
+		char cell;
 	public:
 		Board(int n, int m);
 		void size();
