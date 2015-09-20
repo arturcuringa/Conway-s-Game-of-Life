@@ -57,12 +57,8 @@ void Board::size(){
 	std::cout<<nLin<<" "<<nCol<<std::endl;
 
 }
+
 int Board::round(int lin, int col){
-
-	if(ind > 0 && )
-
-}
-int Board::round(){
 	
 	//stub
 

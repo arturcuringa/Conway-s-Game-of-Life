@@ -23,7 +23,7 @@ class Board{
 		void setAlive(std::ifstream &text);
 		~Board();
 		void print();
-		int round(int lin, col);
+		int round(int lin, int col);
 		void update();
 			 
 };
