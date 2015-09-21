@@ -12,6 +12,50 @@ Board::Board(int n, int m): nLin(n), nCol(m){
 	
 }
 
+bool Board::operator==(const Board& b )const{
+
+	if (nLin != b.nLin || nCol != b.nCol || living != b.living || dead != b.dead )
+	{
+		return false;
+	}
+
+
+	for (int i = 0; i < nLin; ++i)
+	{
+		for (int j = 0; j < nCol; ++j)
+		{
+			if(state[i][j] != b.state[i][j] )
+				return false;
+		}
+	}
+
+	return true;
+}
+Board& Board::operator=(const Board & b ){
+
+	living = b.living;
+	dead = b.dead;
+	nLin = b.nLin;
+	nCol = b.nCol;
+	delete [] state;
+
+	state = new bool * [nLin];
+ 	for (int i = 0; i < nLin; ++i)
+ 	{
+ 		state[i] = new bool [nCol];
+ 	}
+
+ 	for (int i = 0; i < nLin; ++i)
+ 	{
+ 		for (int j = 0; j < nCol; ++j)
+ 		{
+ 			state[i][j] = b.state[i][j];
+ 		}
+ 	}
+ 	return *this;
+
+}
+
 void Board::setAlive(std::ifstream &text){
 	std::string line;
 
