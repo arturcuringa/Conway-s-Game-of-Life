@@ -7,6 +7,7 @@
 int main (int argc, char *argv[] ){
 	int nLin;
 	int nCol;
+	char test = 'y';
 
 	if(argc != 2){
 		std::cout<<"Error: no text input file";
@@ -25,9 +26,17 @@ int main (int argc, char *argv[] ){
 			Board Life(nLin, nCol);
 			Life.size();
 			Life.setAlive(myfile);
-			Life.print();
-			std::cout<<Life.round(3,3);
 			myfile.close();
+			
+			while(test == 'y'){
+			Life.print();
+			std::cout<<"Wanna try, bro? (y/n)"<<std::endl;
+			Life.update();
+			//std::cout<<Life.round(3,3);
+			std::cin>>test;
+			}
+
+
 		}
 		else
 			std::cout<<"File won't open";

@@ -55,35 +55,61 @@ void Board::size(){
 
 int Board::round(int lin, int col){
 	
-	if (lin > 0 && lin < nLin -1 && col > 0 && col < nCol -1)
-	{
-		int i = 0;
-		if(state[lin-1][col] == true){++i;}
-		if(state[lin-1][col-1] == true){++i;}
-		if(state[lin][col-1] == true){++i;}
-		if(state[lin+1][col-1] == true){++i;}
-		if(state[lin+1][col] == true){++i;}
-		if(state[lin+1][col+1] == true){++i;}
-		if(state[lin][col+1] == true){++i;}
-		return i;
-	}
-
-	return 0;
+	int i = 0;
+		if(lin-1>=0 && state[lin-1][col] == true  ){++i;}
+		if(lin-1>=0 && col-1>=0 && state[lin-1][col-1] == true ){++i;}
+		if(col-1>=0 && state[lin][col-1] == true  ){++i;}
+		if(lin+1<nLin &&col-1>=0 && state[lin+1][col-1] == true ){++i;}
+		if(lin+1<nLin && state[lin+1][col] == true ){++i;}
+		if(lin+1<nLin && col+1<nCol && state[lin+1][col+1] == true   ){++i;}
+		if(col+1<nCol && state[lin][col+1] == true ){++i;}
+		if(lin-1>=0 &&col+1<nCol && state[lin-1][col+1] == true ){++i;}
+		
+	return i;
 
 }
 void Board::update(){
+
+	bool ** next = new bool * [nLin];
+ 	for (int i = 0; i < nLin; ++i)
+ 	{
+ 		next[i] = new bool [nCol];
+ 	}
+
 
 	for (int i = 0; i < nLin; ++i)
 	{
 		for (int j = 0; j < nCol; ++j)
 		{
-			//stub
-					
 			
+			if (state[i][j] == true )
+			{
+				if (round(i,j) <= 1 || round(i,j) >=4)
+				{
+					next[i][j] = false;
+				}
+				else if (round(i,j) == 2 || round(i,j == 3))
+				{
+					next[i][j] = true;
+				}
+				
+			}
+			else if (state[i][j] == false && round(i,j) == 3)
+			{
+				next[i][j] = true;
+			}
+			else
+				next[i][j] = false;
+				
 
 		}
 			
 	}
+
+	delete [] state;
+	state = next;
+
+
 }
 
 
