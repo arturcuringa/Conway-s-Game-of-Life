@@ -29,8 +29,10 @@ void Board::setAlive(std::ifstream &text){
 				living++;
 				state[i][j] = true;
 			}	
-			else
-				 state[i][j] = false;
+			else{
+				dead++;
+				state[i][j] = false;
+			}
 		}
 	}
 
@@ -44,17 +46,8 @@ void Board::print(){
 					std::cout<< (state[i][j] == true ? cell : '-') ;
 
 		}
-
-		for (int j = 0; j < nCol; ++j)
-		{
-			std::cout<< round(i,j);
-
-		}
-
-				std::cout<<'\n';
+		std::cout<<'\n';
 	}
-	std::cout<<living<<std::endl;
-
 }
 
 void Board::size(){
@@ -97,9 +90,10 @@ void Board::update(){
 				if (round(i,j) <= 1 || round(i,j) >=4)
 				{
 					--living;
+					++dead;
 					next[i][j] = false;
 				}
-				else if (round(i,j) == 2 || round(i,j == 3))
+				else if (round(i,j) == 2 || round(i,j) == 3)
 				{
 					next[i][j] = true;
 				}
@@ -109,11 +103,13 @@ void Board::update(){
 			{
 				if (round(i,j) == 3)
 				{
+					dead--;
 					++living;
 					next[i][j] = true;
 				}
-				else
+				else{
 					next[i][j] = false;			
+				}
 			}
 			
 				

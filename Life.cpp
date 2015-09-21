@@ -29,11 +29,12 @@ int main (int argc, char *argv[] ){
 			myfile.close();
 			
 			while(test == 'y'){
-			Life.print();
-			std::cout<<"Wanna try, bro? (y/n)"<<std::endl;
-			Life.update();
-			//std::cout<<Life.round(3,3);
-			std::cin>>test;
+
+				Life.print();
+				std::cout<<"Wanna try, bro? (y/n)"<<std::endl;
+				Life.update();
+				//std::cout<<Life.round(3,3);
+				std::cin>>test;
 			}
 
 
