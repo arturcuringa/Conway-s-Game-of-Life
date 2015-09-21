@@ -13,6 +13,7 @@ class Board{
 		int nCol; // Number of collums 
 		bool ** state; // Pointer to boolean array of arrays 
 		char cell; //Type of char used to represent a living cell
+		long long unsigned int living = 0;
 	public:
 		Board(int n, int m); // Constructor 
 		void size(); // Print size of the board
