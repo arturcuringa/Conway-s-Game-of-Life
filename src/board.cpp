@@ -44,9 +44,17 @@ void Board::print(){
 					std::cout<< (state[i][j] == true ? cell : '-') ;
 
 		}
+
+		for (int j = 0; j < nCol; ++j)
+		{
+			std::cout<< round(i,j);
+
+		}
+
 				std::cout<<'\n';
 	}
-		
+	std::cout<<living<<std::endl;
+
 }
 
 void Board::size(){
@@ -88,7 +96,7 @@ void Board::update(){
 			{
 				if (round(i,j) <= 1 || round(i,j) >=4)
 				{
-					living--;
+					--living;
 					next[i][j] = false;
 				}
 				else if (round(i,j) == 2 || round(i,j == 3))
@@ -97,13 +105,17 @@ void Board::update(){
 				}
 				
 			}
-			else if (state[i][j] == false && round(i,j) == 3)
+			else if (state[i][j] == false)
 			{
-				living++;
-				next[i][j] = true;
+				if (round(i,j) == 3)
+				{
+					++living;
+					next[i][j] = true;
+				}
+				else
+					next[i][j] = false;			
 			}
-			else
-				next[i][j] = false;
+			
 				
 
 		}
