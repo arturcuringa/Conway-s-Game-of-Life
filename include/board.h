@@ -11,7 +11,11 @@
 #include <fstream>
 #include <string>
 
+/**
+	\class Board
+	\brief Class Board that simulate the dead and living cells of Conway's game
 
+ */
 class Board{
 
 	private:

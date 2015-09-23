@@ -1,3 +1,11 @@
+/* 
+	\mainpage
+	\author Artur Maricato Curinga e Lucas de Medeiros Ferreira
+	\version 1.0
+	\date 23/09/2015
+*/
+
+
 #include "board.h"
 
 
