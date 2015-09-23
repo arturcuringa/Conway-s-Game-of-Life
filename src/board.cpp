@@ -153,9 +153,14 @@ void Board::size(){
 }
 
 
-
+/** \brief Round  */
 int Board::round(int lin, int col){
-	
+	/**
+		\details Check the number of living cells around the cell[lin][col]
+		\param lin, the line index and col, the column index
+		\return void
+
+	 */
 	int i = 0;
 		if(lin-1>=0 && state[lin-1][col] == true  ){++i;}
 		if(lin-1>=0 && col-1>=0 && state[lin-1][col-1] == true ){++i;}
@@ -169,7 +174,19 @@ int Board::round(int lin, int col){
 	return i;
 
 }
+
+/** \brief Update */
 void Board::update(){
+	/** 
+		\details Update the Board according to the 4 rules of the game according to the Wikipedia (https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life):
+					Any live cell with fewer than two live neighbours dies, as if caused by under-population.
+					Any live cell with two or three live neighbours lives on to the next generation.
+					Any live cell with more than three live neighbours dies, as if by overcrowding.
+					Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+		\param void
+		\return void
+	*/
+
 	++generation;
 	bool ** next = new bool * [nLin];
  	for (int i = 0; i < nLin; ++i)
@@ -224,7 +241,12 @@ void Board::update(){
 
 }
 
-
+/** \brief Constructor */
 Board::~Board(){
+	/**
+		\details Destructor Board, free dynamic allocated memmory
+		\param void
+		\return void
+ 	 */
 	delete []  state;
 }
