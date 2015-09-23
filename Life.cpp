@@ -51,27 +51,66 @@ int main (int argc, char *argv[] ){
 			Life.setAlive(myfile);
 			myfile.close();
 
-			std::vector< std::vector<int> > Test;
-			int i =0;
-			while(test == 'y'){
-				Life.print();
-				Test.push_back(hashingBoard(Life));
-				std::cout<<"Continue viewing next generation? (y/n) ";
-				for (int j = i -1; j >= 0 ; --j)
+			if (argc == 3)
+			{
+
+				line = argv[2];
+				std::ofstream output_file (line);
+				if (output_file.is_open())
 				{
-					if (Test.at(j) == Test.at(i))
+					std::vector< std::vector<int> > Test;
+					int i =0;
+					while(test == 'y'){
+						Life.print();
+						Life.print(output_file);
+						Test.push_back(hashingBoard(Life));
+						std::cout<<"Continue viewing next generation? (y/n) ";
+						for (int j = i -1; j >= 0 ; --j)
+						{
+							if (Test.at(j) == Test.at(i))
+							{
+								std::cout<<"Stable!!"<<std::endl;
+							}
+						}
+
+						Life.update();
+
+						std::cin>>test;
+						i++;
+				}
+			
+					output_file.close();
+
+				}
+				else
+					std::cout<<"<output_file> error!";
+				
+
+					
+
+			}else{
+
+				std::vector< std::vector<int> > Test;
+				int i =0;
+				while(test == 'y'){
+					Life.print();
+					Test.push_back(hashingBoard(Life));
+					std::cout<<"Continue viewing next generation? (y/n) ";
+					for (int j = i -1; j >= 0 ; --j)
 					{
-						std::cout<<"Stable!!"<<std::endl;
+						if (Test.at(j) == Test.at(i))
+						{
+							std::cout<<"Stable!!"<<std::endl;
+						}
 					}
+
+					Life.update();
+
+					std::cin>>test;
+					i++;
 				}
 
-				Life.update();
-
-				std::cin>>test;
-				i++;
 			}
-
-
 		}
 		else
 			std::cout<<"File won't open";

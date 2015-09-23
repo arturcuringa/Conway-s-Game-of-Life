@@ -93,6 +93,23 @@ void Board::print(){
 		std::cout<<"]\n";
 	}
 }
+void Board::print(std::ofstream &text){
+	text << "Showing generation: "<< generation <<":"<<std::endl;
+
+	for (int i = 0; i < nLin; ++i)
+	{
+		std::string line;
+		text <<"[";
+		for (int j = 0; j < nCol; ++j)
+		{
+			line += (state[i][j] == true ? '*' : ' ') ;
+
+		}
+		text << line;
+		text<<"]\n";
+	}
+
+}
 
 void Board::size(){
 
@@ -123,13 +140,14 @@ void Board::update(){
  		next[i] = new bool [nCol];
  	}
 
- 	int around = round(i,j);
+ 	
 
 	for (int i = 0; i < nLin; ++i)
 	{
+		
 		for (int j = 0; j < nCol; ++j)
 		{
-			
+			int around = round(i,j);
 			if (state[i][j] == true )
 			{
 				if (around <= 1 || around >=4)
