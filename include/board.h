@@ -15,8 +15,14 @@ class Board{
 		char cell; //Type of char used to represent a living cell
 		int dead = 0; // Dead cells count
 		int living = 0; // living cells count
+		int generation = 0;
 	public:
 		Board(int n, int m); // Constructor
+		int getnLin(){return nLin;};
+		int getnCol(){return nCol;};
+		bool getcell(int x, int y){return state[x][y]; };
+		int getliving(){return living;};
+		int getdead(){return dead;};
 		bool operator==(const Board & b )const;
 		Board& operator=(const Board & b ); 
 		void size(); // Print size of the board

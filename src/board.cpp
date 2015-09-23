@@ -62,7 +62,6 @@ void Board::setAlive(std::ifstream &text){
 
 	std::getline(text,line);
 	cell = line[0];
-	std::cout<<cell;
 	for (int i = 0; i < nLin; ++i)
 	{
 		std::getline(text, line);
@@ -82,15 +81,16 @@ void Board::setAlive(std::ifstream &text){
 
 }
 void Board::print(){
-	std::cout<<"\n";
+	std::cout<<"Showing generation: "<< ++generation <<":"<<std::endl;
 	for (int i = 0; i < nLin; ++i)
 	{
+		std::cout<<"[";
 		for (int j = 0; j < nCol; ++j)
 		{
-					std::cout<< (state[i][j] == true ? cell : '-') ;
+			std::cout<< (state[i][j] == true ? '*' : ' ') ;
 
 		}
-		std::cout<<'\n';
+		std::cout<<"]\n";
 	}
 }
 
@@ -123,6 +123,7 @@ void Board::update(){
  		next[i] = new bool [nCol];
  	}
 
+ 	int around = round(i,j);
 
 	for (int i = 0; i < nLin; ++i)
 	{
@@ -131,13 +132,13 @@ void Board::update(){
 			
 			if (state[i][j] == true )
 			{
-				if (round(i,j) <= 1 || round(i,j) >=4)
+				if (around <= 1 || around >=4)
 				{
 					--living;
 					++dead;
 					next[i][j] = false;
 				}
-				else if (round(i,j) == 2 || round(i,j) == 3)
+				else if (around == 2 || around == 3)
 				{
 					next[i][j] = true;
 				}
@@ -145,7 +146,7 @@ void Board::update(){
 			}
 			else if (state[i][j] == false)
 			{
-				if (round(i,j) == 3)
+				if (around == 3)
 				{
 					dead--;
 					++living;
