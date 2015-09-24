@@ -10,6 +10,9 @@ Board::Board(int n, int m): nLin(n), nCol(m){
 		\param Integer values of lines and columns 
 		\return Create a new object of Board class
  	 */
+	if(n<1||m<1){
+		throw std::out_of_range( "Index provided out of valid range!" );
+	}
  	state = new bool * [nLin];
  	for (int i = 0; i < nLin; ++i)
  	{

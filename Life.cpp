@@ -1,10 +1,11 @@
+
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
 #include "board.h"
 
-
+// Generate the 
 std::vector<int> hashingBoard( Board&  b){
 
 	std::vector<int> result;
@@ -29,12 +30,12 @@ std::vector<int> hashingBoard( Board&  b){
 
 
 int main (int argc, char *argv[] ){
-	int nLin;
+int nLin;
 	int nCol;
 	char test = 'y';
 
 	if(argc < 2){
-		std::cout<<"Wrong syntaxe! \n Use : ./life <input_file> [<output_file>]";
+		std::cout<<"LORD GANGROCK:wrong syntaxe! \n Use : ./life <input_file> [<output_file>]";
 	}
 	else{
 		std::string line;
@@ -64,12 +65,18 @@ int main (int argc, char *argv[] ){
 						Life.print();
 						Life.print(output_file);
 						Test.push_back(hashingBoard(Life));
-						std::cout<<"Continue viewing next generation? (y/n) ";
+						if(Life.getliving()==0){
+							std::cout<<"\nLORD GANGROK:BRACE YOURSELF MORTAL APOCALYPSE JUST CAME "<<std::endl;
+							break;
+						}
+						
+						std::cout<<"LORD GANGROK: SHALL WE CONTINUE THE EXPERIMENT? (y/n) ";
 						for (int j = i -1; j >= 0 ; --j)
 						{
 							if (Test.at(j) == Test.at(i))
 							{
-								std::cout<<"Stable!!"<<std::endl;
+								std::cout<<"\nLORD GANGROK:CONGRATULATIONS MORTAL THE EXPERIMENT IS STABLE"<<std::endl;
+								break;
 							}
 						}
 
@@ -95,12 +102,17 @@ int main (int argc, char *argv[] ){
 				while(test == 'y'){
 					Life.print();
 					Test.push_back(hashingBoard(Life));
-					std::cout<<"Continue viewing next generation? (y/n) ";
+					if(Life.getliving()==0){
+						std::cout<<"\nLORD GANGROK:BRACE YOURSELF MORTAL APOCALYPSE JUST CAME "<<std::endl;
+						break;
+					}
+					std::cout<<"LORD GANGROK: SHALL WE CONTINUE THE EXPERIMENT? (y/n) ";
 					for (int j = i -1; j >= 0 ; --j)
 					{
 						if (Test.at(j) == Test.at(i))
 						{
-							std::cout<<"Stable!!"<<std::endl;
+							std::cout<<"\nLORD GANGROK:CONGRATULATIONS MORTAL THE EXPERIMENT IS STABLE"<<std::endl;
+							break;
 						}
 					}
 
@@ -113,12 +125,10 @@ int main (int argc, char *argv[] ){
 			}
 		}
 		else
-			std::cout<<"File won't open";
+			std::cout<<"LORD GANGROCK:File won't open,puny human";
 
 
 	
 	}
-	
-
 	return 0;
 }

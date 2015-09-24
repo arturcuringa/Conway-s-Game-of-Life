@@ -8,6 +8,7 @@
 #define _BOARD_
 
 #include <iostream>
+#include <stdexcept>
 #include <fstream>
 #include <string>
 
