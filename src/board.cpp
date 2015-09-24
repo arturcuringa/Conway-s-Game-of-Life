@@ -109,9 +109,9 @@ void Board::setAlive(std::ifstream &text){
 }
 
 /**  \brief print on Terminal */
-void Board::print(){
+void Board::print(sf::RenderWindow &janela){
 	/** 
-		\details Print the Board in the terminal 
+		\details Print the Board in the terminal and in a window
 		\param void
 		\return void
 	
