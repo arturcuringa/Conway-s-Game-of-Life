@@ -1,4 +1,4 @@
-
+#include <SFML/Graphics.hpp>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -61,8 +61,9 @@ int nLin;
 				{
 					std::vector< std::vector<int> > Test;
 					int i =0;
+					sf::RenderWindow janela(sf::VideoMode(20*nLin,20*nCol),"GANGROK's GAME OF LIFE");
 					while(test == 'y'){
-						Life.print();
+						Life.print(janela);
 						Life.print(output_file);
 						Test.push_back(hashingBoard(Life));
 						if(Life.getliving()==0){
@@ -99,8 +100,9 @@ int nLin;
 
 				std::vector< std::vector<int> > Test;
 				int i =0;
+				sf::RenderWindow janela(sf::VideoMode(20*nLin,20*nCol),"GANGROCK's GAME OF LIFE");
 				while(test == 'y'){
-					Life.print();
+					Life.print(janela);
 					Test.push_back(hashingBoard(Life));
 					if(Life.getliving()==0){
 						std::cout<<"\nLORD GANGROK:BRACE YOURSELF MORTAL APOCALYPSE JUST CAME "<<std::endl;

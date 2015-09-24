@@ -117,17 +117,27 @@ void Board::print(){
 	
 	*/
 	std::cout<<"Showing generation: "<< generation <<":"<<std::endl;
+	std::cout<<"\n";
+	janela.clear(sf::Color(0,0,0));
+	sf::CircleShape circulo[nLin][nCol](16);
 	for (int i = 0; i < nLin; ++i)
 	{
-		std::cout<<"[";
 		for (int j = 0; j < nCol; ++j)
 		{
-			std::cout<< (state[i][j] == true ? '*' : ' ') ;
+			std::cout<< (state[i][j] == true ? cell : '-') ;
+			circulo[i][j].setPosition(10+20*nLin,10+20*nCol);
+			circulo.setFillColor(sf::Color(0,0,0));
+			if(state[i][j] == true){circulo.setFillColor(sf::Color(0,255,0));}
+			circulo.setOutlineThickness(10);
+			circulo.setOutlineColor(sf::Color(0, 0, 255));
+			janela.draw(circulo[i][j]);
 
 		}
-		std::cout<<"]\n";
+				std::cout<<'\n';
 	}
+	janela.display();
 }
+
 void Board::print(std::ofstream &text){
 	text << "Showing generation: "<< generation <<":"<<std::endl;
 

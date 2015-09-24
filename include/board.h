@@ -7,6 +7,7 @@
 #ifndef _BOARD_
 #define _BOARD_
 
+#include <SFML/Graphics.hpp>
 #include <iostream>
 #include <stdexcept>
 #include <fstream>
